@@ -1,0 +1,46 @@
+<h2>Thông tin thuốc</h2>
+
+<form method="get" action="/admin/viewMedicine">
+    <label for="TimTheoMaThuoc" class="col-form-label">Nhập mã thuốc để xem: </label>
+    <div class="d-flex">
+        <input type="text" name="TimTheoMaThuoc" class="form-control" id="TimTheoMaThuoc">
+        <button  type="submit" class="btn btn-primary">Xem</button>
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mã thuốc</th>
+      <th>Tên thuốc</th>
+      <th>Đơn vị tính</th>
+      <th>Chỉ định</th>
+      <th>Số lượng tồn</th>
+      <th>Ngày hết hạn</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each ThongTinThuoc}}
+    <tr>
+    <td><input type="text" value="{{this.MaThuoc}}"></td>
+    <td><input type="text" value="{{this.TenThuoc}}"></td>
+    <td><input type="text" value="{{this.DonViTinh}}"></td>
+    <td><input type="text" value="{{this.ChiDinh}}"></td>
+    <td><input type="text" value="{{this.SoLuongTonKho}}"></td>
+    <td><input type="text" value="{{this.NgayHetHan}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+
+<script>
+  $('#myButton').click(function() {
+    $('#myForm').submit();
+  });
+</script>

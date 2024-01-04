@@ -1,0 +1,55 @@
+<h2>Tra cứu kế hoạch điều trị bệnh nhân</h2>
+
+<form method="get" action="/staff/viewTreatmentPlan">
+    <label for="TimTheoMaBenhAn" class="col-form-label">Nhập mã bệnh án để xem: </label>
+    <div class="d-flex">
+        <input type="text" name="TimTheoMaBenhAn" class="form-control" id="TimTheoMaBenhAn">
+        <button  type="submit" class="btn btn-primary">Xem</button>
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mã điều trị</th>
+      <th>Mô tả</th>
+      <th>Ghi chú</th>
+      <th>Trạng thái</th>
+      <th>Mã bệnh án</th>
+      <th>Mã thanh toán</th>
+      <th>Mã dịch vụ</th>
+      <th>Ngày</th>
+      <th>Ca</th>
+      <th>Nha sĩ chính</th>
+      <th>Nha sĩ phụ</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {{#each KeHoachDieuTri}}
+    <tr>
+    <td><input type="text" value="{{this.MaDieuTri}}"></td>
+    <td><input type="text" value="{{this.MoTa}}"></td>
+    <td><input type="text" value="{{this.GhiChu}}"></td>
+    <td><input type="text" value="{{this.TrangThai}}"></td>
+    <td><input type="text" value="{{this.MaBenhAn}}"></td>
+    <td><input type="text" value="{{this.MaThanhToan}}"></td>
+    <td><input type="text" value="{{this.MaDichVu}}"></td>
+    <td><input type="text" value="{{this.Ngay}}"></td>
+    <td><input type="text" value="{{this.Ca}}"></td>
+    <td><input type="text" value="{{this.NhaSiChinh}}"></td>
+    <td><input type="text" value="{{this.NhaSiPhu}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+<script>
+  $('#myButton').click(function() {
+    $('#myForm').submit();
+  });
+</script>

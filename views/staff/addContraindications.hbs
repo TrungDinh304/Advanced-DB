@@ -1,0 +1,61 @@
+<div>
+    <div>
+        <div>
+            <h1>Thêm chống chỉ định thuốc bệnh nhân</h1>
+        </div>
+        <div>
+            <form id="myForm" method="post" action="/staff/addContraindications">
+                <div class="mb-3">
+                    <label for="mabenhan" class="col-form-label">Mã bệnh nhân:</label>
+                    <input type="text" name="mabenhan" class="form-control" id="mabenhan">
+                </div>
+                <div class="mb-3">
+                    <label for="sttccd" class="col-form-label">Số thứ tự:</label>
+                    <input type="number" name="sttccd" class="form-control" id="sttccd">
+                </div>
+                <div class="mb-3">
+                    <label for="mota" class="col-form-label">Mô tả:</label>
+                    <input type="text" name="mota" class="form-control" id="mota">
+                </div>
+                
+                
+            </form>
+        </div>
+        <div>
+            <button id="myButton"  type="submit" class="btn btn-primary">Thêm thông tin thuốc</button>
+        </div>
+    </div>
+</div>
+{{!-- <h2>Lịch cá nhân</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nha sĩ khám</th>
+      <th>Ngày khám</th>
+      <th>Thứ tự ca</th>
+      <th>Trạng thái</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each LichCaNhan}}
+    <tr>
+    <td><input type="text" value="{{this.MaNhaSi}}"></td>
+    <td><input type="text" value="{{this.Ngay}}"></td>
+    <td><input type="text" value="{{this.ThuTuCa}}"></td>
+    <td><input type="text" value="{{this.TrangThai}}"></td>
+    <td>
+        <button type="button" class="btn btn-primary">Sửa</button>
+        <button type="button" class="btn btn-danger">Xóa</button>
+    </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table> --}}
+
+
+<script>
+  $('#myButton').click(function() {
+    $('#myForm').submit();
+  });
+</script>
