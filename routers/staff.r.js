@@ -19,4 +19,8 @@ router.get("/addContraindications", staffController.rederAddContraindications);
 router.post("/addContraindications", staffController.rederAddContraindications);
 
 router.get("/viewTreatmentPlan", staffController.renderViewTreatmentPlan);
+router.get("/viewAppointmentByRoom", staffController.renderViewAppointmentByRoom);
+router.get("/viewAppointmentByPatient", staffController.renderViewAppointmentByPatient);
+router.get("/viewAppointmentByDoctor", staffController.renderViewAppointmentByDoctor);
+
 module.exports = router;

@@ -125,21 +125,102 @@ module.exports = {
         if (!req.session.config)
             res.redirect('/');
     
-        //let MaThuoc = req.session.user;
+        
         console.log(req.query,req.body)
         const pool = new db.db.ConnectionPool(req.session.config);
         const connection = await pool.connect();
         const Request = new db.db.Request(connection);
     
-        let TimTheoMaThuoc = req.query.TimTheoMaThuoc;
-        if (TimTheoMaThuoc == undefined)
+        let  TimTheoMaBenhAn= req.query.TimTheoMaBenhAn;
+        if ( TimTheoMaBenhAn== undefined)
             return null;
-        //Request.input('MaThuoc', db.db.VarChar, req.session.user);
-        Request.input('MaThuoc', db.db.VarChar, TimTheoMaThuoc);
+        
+        Request.input('MaBA', db.db.VarChar, TimTheoMaBenhAn);
     
     
         try {
-            const result1 = await Request.execute('sp_XemThongTinThuoc');
+            const result1 = await Request.execute('sp_xemKeHoachDieuTri');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+    viewAppointmentByRoom: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+    
+        console.log(req.query,req.body)
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+    
+        let  TimTheoNgay= req.query.TimTheoNgay;
+        let  TimTheoPhong= req.query.TimTheoPhong;
+        if ( TimTheoNgay == undefined) return null;
+        if ( TimTheoPhong == undefined) return null;
+
+        Request.input('Ngay', db.db.Date, new Date(TimTheoNgay));
+        Request.input('Phong', db.db.VarChar, TimTheoPhong);
+    
+    
+        try {
+            const result1 = await Request.execute('sp_locCuocHenTheoPhongKham');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+    viewAppointmentByPatient: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+    
+        console.log(req.query,req.body)
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+    
+        let  TimTheoNgay= req.query.TimTheoNgay;
+        let  TimTheoBenhNhan= req.query.TimTheoBenhNhan;
+        if ( TimTheoNgay == undefined) return null;
+        if ( TimTheoBenhNhan == undefined) return null;
+
+        Request.input('Ngay', db.db.Date, new Date(TimTheoNgay));
+        Request.input('MaBA', db.db.VarChar, TimTheoBenhNhan);
+    
+    
+        try {
+            const result1 = await Request.execute('sp_locCuocHenTheoBenhNhan');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+    viewAppointmentByDoctor: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+    
+        console.log(req.query,req.body)
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+    
+        let  TimTheoNgay= req.query.TimTheoNgay;
+        let  TimTheoNhaSi= req.query.TimTheoNhaSi;
+        if ( TimTheoNgay == undefined) return null;
+        if ( TimTheoNhaSi == undefined) return null;
+
+        Request.input('Ngay', db.db.Date, new Date(TimTheoNgay));
+        Request.input('NhaSi', db.db.VarChar, TimTheoNhaSi);
+    
+    
+        try {
+            const result1 = await Request.execute('sp_locCuocHenTheoNhaSi');
             //console.log(result1.recordset);
             return result1.recordset;
         } catch (err) {

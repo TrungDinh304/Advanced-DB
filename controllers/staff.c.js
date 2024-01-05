@@ -70,7 +70,7 @@ module.exports = {
             logout:true
         });
     },
-    renderViewTreatmentPlan: async function renderTreatmentPlan(req, res, next) {
+    renderViewTreatmentPlan: async function renderViewTreatmentPlan(req, res, next) {
         if(!req.session.user)
             res.redirect('/');
         let KeHoachDieuTri = null;
@@ -79,6 +79,42 @@ module.exports = {
         res.render("staff/viewTreatmentPlan", {
             title: "View TreatmentPlan",
             KeHoachDieuTri: KeHoachDieuTri,
+            logout:true
+        });
+    },
+    renderViewAppointmentByRoom: async function renderViewAppointmentByRoom(req, res, next) {
+        if(!req.session.user)
+            res.redirect('/');
+        let CuocHen = null;
+        CuocHen = await staffModel.viewAppointmentByRoom(req, res, next);
+        
+        res.render("staff/viewAppointmentByRoom", {
+            title: "View AppointmentByRoom",
+            CuocHen: CuocHen,
+            logout:true
+        });
+    },
+    renderViewAppointmentByPatient: async function renderViewAppointmentByPatient(req, res, next) {
+        if(!req.session.user)
+            res.redirect('/');
+        let CuocHen = null;
+        CuocHen = await staffModel.viewAppointmentByPatient(req, res, next);
+        
+        res.render("staff/viewAppointmentByPatient", {
+            title: "View AppointmentByPatient",
+            CuocHen: CuocHen,
+            logout:true
+        });
+    },
+    renderViewAppointmentByDoctor: async function renderViewAppointmentByDoctor(req, res, next) {
+        if(!req.session.user)
+            res.redirect('/');
+        let CuocHen = null;
+        CuocHen = await staffModel.viewAppointmentByDoctor(req, res, next);
+        
+        res.render("staff/viewAppointmentByDoctor", {
+            title: "View AppointmentByDoctor",
+            CuocHen: CuocHen,
             logout:true
         });
     },
