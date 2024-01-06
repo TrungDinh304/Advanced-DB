@@ -4,6 +4,8 @@ const router = app.Router();
 
 const doctorController = require('../controllers/doctor.c');
 router.get("/", doctorController.renderOption);
+
+router.get("/appointmentOption", doctorController.renderAppointmentOption);
 //router.get("/editAppointment", staffController.renderEditAppointment);
 
 router.get("/viewDentists", doctorController.renderViewDentists);

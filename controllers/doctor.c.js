@@ -2,13 +2,23 @@ const doctorModel = require('../models/doctor.m');
 
 module.exports = {
     renderOption: async function renderOption(req, res, next) {
-        if (!req.session.user) {
+        if (!req.session.user)
             res.redirect('/');
-        }
-        res.render('doctor/option', {
+
+        res.render("doctor/option", {
             title: "Doctor Option",
             logout: true
         });
+    },
+
+    renderAppointmentOption: async function renderAppointmentOption(req, res, next) {
+        if (!req.session.user)
+            res.redirect('/');
+
+        res.render("doctor/appointmentOption", {
+            title: "Appointment Option",
+            logout: true
+        })
     },
 
     renderViewDentists: async function renderViewDentists(req, res, next) {
@@ -18,7 +28,7 @@ module.exports = {
 
         let Dentist = await doctorModel.viewDentists(req, res, next);
 
-        res.render('doctor/viewDentists', {
+        res.render("doctor/viewDentists", {
             title: "View Dentists",
             Dentist: Dentist,
             logout: true
@@ -72,5 +82,5 @@ module.exports = {
             CuocHen: CuocHen,
             logout: true
         });
-    },
+    }
 }

@@ -1,12 +1,14 @@
 const db = require('../utils/db');
 const loginModel = require('../models/login.m');
 
+// Model: trường hợp mà backend bị sai liên quan đến database có thể vào đây hoặc sửa script sql.
+
 module.exports = {
     viewDentists: async function (req, res, next) {
         if (!req.session.config)
             res.redirect('/');
 
-        console.log(req.query, req.body)
+        console.log(req.query, req.body);
         const pool = new db.db.ConnectionPool(req.session.config);
         const connection = await pool.connect();
         const Request = new db.db.Request(connection);
