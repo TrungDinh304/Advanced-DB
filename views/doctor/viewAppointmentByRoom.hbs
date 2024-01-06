@@ -1,0 +1,52 @@
+<h2>Lọc các cuộc hẹn trong ngày theo phòng khám bệnh</h2>
+
+<form method="get" action="/doctor/viewAppointmentByRoom">
+  <div class="mb-3">
+    <label for="TimTheoNgay" class="col-form-label">Nhập ngày: </label>
+    <input type="date" name="TimTheoNgay" class="form-control" id="TimTheoNgay">
+  </div>
+  <div class="mb-3">
+    <label for="TimTheoPhong" class="col-form-label">Nhập phòng: </label>
+    <input type="number" name="TimTheoPhong" class="form-control" id="TimTheoPhong">
+  </div>
+  <button type="submit" class="btn btn-primary">Xem</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mã cuộc hẹn</th>
+      <th>Phòng</th>
+      <th>Ngày</th>
+      <th>Ca</th>
+      <th>Nha sĩ chính</th>
+      <th>Nha sĩ phụ</th>
+      <th>Mã bệnh án</th>
+      <th>Trạng thái</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each CuocHen}}
+    <tr>
+      <td><input type="text" value="{{this.MaCuocHen}}"></td>
+      <td><input type="text" value="{{this.Phong}}"></td>
+      <td><input type="text" value="{{this.Ngay}}"></td>
+      <td><input type="text" value="{{this.Ca}}"></td>
+      <td><input type="text" value="{{this.NS_khamchinh}}"></td>
+      <td><input type="text" value="{{this.NS_khamphu}}"></td>
+      <td><input type="text" value="{{this.MaBA}}"></td>
+      <td><input type="text" value="{{this.TrangThai}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+<script>
+  $('#myButton').click(function () {
+    $('#myForm').submit();
+  });
+</script>
