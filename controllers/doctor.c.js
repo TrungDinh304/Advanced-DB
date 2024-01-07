@@ -26,13 +26,26 @@ module.exports = {
             res.redirect('/');
         }
 
-        let Dentist = await doctorModel.viewDentists(req, res, next);
+        const Dentist = await doctorModel.viewDentists(req, res, next);
 
         res.render("doctor/viewDentists", {
             title: "View Dentists",
             Dentist: Dentist,
             logout: true
         })
+    },
+
+    renderViewTreatmentPlan: async function renderAddTreatmentPlan(req, res, next) {
+        if (!req.session.user)
+            res.redirect('/');
+
+        const KeHoachDieuTri = await doctorModel.viewTreatmentPlan(req, res, next);
+
+        res.render("doctor/viewTreatmentPlan", {
+            title: "View Treatment Plan",
+            KeHoachDieuTri: KeHoachDieuTri,
+            logout: true
+        });
     },
 
     renderAddTreatmentPlan: async function renderAddTreatmentPlan(req, res, next) {
@@ -82,5 +95,56 @@ module.exports = {
             CuocHen: CuocHen,
             logout: true
         });
+    },
+
+
+    renderSelectPrescription: async function renderSelectPrescription(req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        const DonThuoc = await doctorModel.selectPrescription(req, res, next);
+
+        res.render("doctor/viewPrescription", {
+            title: "View Prescription",
+            DonThuoc: DonThuoc,
+            logout: true
+        });
+    },
+
+    renderAddPrescription: async function renderAddPrescription(req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        await doctorModel.addPrescription(req, res, next);
+
+        res.render("doctor/addPrescription", {
+            title: "Add Prescription",
+            DonThuoc: DonThuoc,
+            logout: true
+        });
+    },
+
+    renderDeletePrescription: async function renderDeletePrescription(req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        await doctorModel.deletePrescription(req, res, next);
+
+        res.render("doctor/deletePrescription", {
+            title: "Delete Prescription",
+            logout: true
+        });
+    },
+
+    renderUpdatePrescription: async function renderUpdatePrescription(req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        await doctorModel.updatePrescription(req, res, next);
+
+        res.render("doctor/updatePrescription", {
+            title: "View Prescription",
+            logout: true
+        })
     }
 }

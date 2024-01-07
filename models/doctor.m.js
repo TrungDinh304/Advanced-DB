@@ -28,6 +28,30 @@ module.exports = {
         }
     },
 
+    viewTreatmentPlan: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+        console.log(req.query, req.body)
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+
+        let TimTheoMaBenhAn = req.query.TimTheoMaBenhAn;
+        if (TimTheoMaBenhAn == undefined)
+            return null;
+
+        Request.input('MaBA', db.db.VarChar, TimTheoMaBenhAn);
+
+        try {
+            const result1 = await Request.execute('sp_xemKeHoachDieuTri');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+
     addTreatmentPlan: async function (req, res, next) {
         if (!req.session.config)
             res.redirect('/');
@@ -104,6 +128,29 @@ module.exports = {
             }
         });
     },
+
+    selectPrescription: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+        let MaDT = req.query.MaDT;
+
+        if (MaDT == undefined)
+            return null;
+
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+
+        Request.input('MaDT', db.db.VarChar, MaDT);
+
+        const result1 = await Request.query('SELECT * FROM ChiTietDonThuoc WHERE MaDT = @MaDT', (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            return result1.recordset;
+        });
+    },
+
     addPrescription: async function (req, res, next) {
         if (!req.session.config)
             res.redirect('/');
