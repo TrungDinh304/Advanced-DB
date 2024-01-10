@@ -70,9 +70,9 @@ module.exports = {
         if (!req.session.config)
             res.redirect('/');
         let { 
-            mabenhan,hoten,ngaysinh,gioitinh,email,sodienthoai,diachi,tongtiendieutri,tongtiendieutridatra,tongquan
+            mabenhan,hoten,ngaysinh,gioitinh,email,sodienthoai,diachi,tongquan
         } = req.body;
-        console.log(mabenhan,hoten,ngaysinh,gioitinh,email,sodienthoai,diachi,tongtiendieutri,tongtiendieutridatra,tongquan)
+        console.log(mabenhan,hoten,ngaysinh,gioitinh,email,sodienthoai,diachi,tongquan)
 
         const pool = new db.db.ConnectionPool(req.session.config);
         const connection = await pool.connect();
@@ -85,8 +85,8 @@ module.exports = {
         Request.input('email', db.db.VarChar, email);
         Request.input('sodienthoai', db.db.VarChar, sodienthoai);
         Request.input('diachi', db.db.VarChar, diachi);
-        Request.input('TongTienDieuTri', db.db.Int, tongtiendieutri);
-        Request.input('TongTienDieuTri_datra', db.db.Int, tongtiendieutridatra);
+        Request.input('TongTienDieuTri', db.db.Int, 0);
+        Request.input('TongTienDieuTri_datra', db.db.Int, 0);
         Request.input('TongQuan', db.db.VarChar, tongquan);
         
           
