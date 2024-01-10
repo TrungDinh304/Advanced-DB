@@ -1,0 +1,46 @@
+<h2>Tra cứu kế hoạch điều trị bệnh nhân</h2>
+
+<form method="get" action="/doctor/viewDentists">
+    <label for="MaNS" class="col-form-label">Nhập mã nha sĩ để xem: </label>
+    <div class="d-flex">
+        <input type="text" name="MaNS" class="form-control" id="MaNS">
+        <button type="submit" class="btn btn-primary">Xem</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã nha sĩ</th>
+            <th>Tên nha sĩ</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Số điện thoại</th>
+            <th>Email</th>
+            <th>Địa chỉ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each Dentist}}
+        <tr>
+            <td><input type="text" value="{{this.MaNS}}"></td>
+            <td><input type="text" value="{{this.TenNS}}"></td>
+            <td><input type="text" value="{{this.Ngaysinh}}"></td>
+            <td><input type="text" value="{{this.gioitinh}}"></td>
+            <td><input type="text" value="{{this.sodienthoai}}"></td>
+            <td><input type="text" value="{{this.Email}}"></td>
+            <td><input type="text" value="{{this.Diachi}}"></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+<script>
+    $('#myButton').click(function () {
+        $('#myForm').submit();
+    });
+</script>

@@ -1,0 +1,66 @@
+<h2>Tra cứu kế hoạch điều trị bệnh nhân</h2>
+
+<form method="get" action="/doctor/viewTreatmentPlan">
+    <label for="TimTheoMaBenhAn" class="col-form-label">Nhập mã bệnh án để xem: </label>
+    <div class="d-flex">
+        <input type="text" name="TimTheoMaBenhAn" class="form-control" id="TimTheoMaBenhAn">
+        <button type="submit" class="btn btn-primary">Xem</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã điều trị</th>
+            <th>Mô tả</th>
+            <th>Ghi chú</th>
+            <th>Trạng thái</th>
+            <th>Mã bệnh án</th>
+            <th>Mã thanh toán</th>
+            <th>Mã dịch vụ</th>
+            <th>Ngày</th>
+            <th>Ca</th>
+            <th>Nha sĩ chính</th>
+            <th>Nha sĩ phụ</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {{#each KeHoachDieuTri}}
+        <tr>
+            <td><input type="text" value="{{this.MaDT}}"></td>
+            <td><input type="text" value="{{this.MoTa}}"></td>
+            <td><input type="text" value="{{this.GhiChu}}"></td>
+            <td><input type="text" value="{{this.TrangThai}}"></td>
+            <td><input type="text" value="{{this.MaBA}}"></td>
+            <td><input type="text" value="{{this.MaTT}}"></td>
+            <td><input type="text" value="{{this.MaDV}}"></td>
+            <td><input type="text" value="{{this.Ngay}}"></td>
+            <td><input type="text" value="{{this.Ca}}"></td>
+            <td><input type="text" value="{{this.NS_khamchinh}}"></td>
+            <td><input type="text" value="{{this.NS_khamphu}}"></td>
+            <td>
+                <button type="button" class="btn btn-primary btn-ctdt"><a href="">Chi tiết đơn thuốc</a></button>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+<script>
+    $('#myButton').click(function () {
+        $('#myForm').submit();
+    });
+
+    const btnMed = document.getElementsByClassName('btn-ctdt');
+    for (let item of btnMed) {
+        let MaDT = item.closest('tr').cells[0].children[0].value;
+        let anchor = item.children[0];
+        const url = 'doctor/viewTreatmentPlan/viewPrescription?madt=' + MaDT;
+        anchor.href = url;
+    }
+</script>

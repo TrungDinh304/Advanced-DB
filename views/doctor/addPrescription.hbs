@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <div>
+            <h1>Thêm chi tiết đơn thuốc</h1>
+        </div>
+        <div class="modal-body">
+            <form id="myForm" method="post" action="/doctor/viewTreatmentPlan/addPrescription">
+                <div class="mb-3">
+                    <label for="MaThuoc" class="col-form-label">Mã thuốc:</label>
+                    <input type="text" name="MaThuoc" class="form-control" id="MaThuoc">
+                </div>
+                <div class="mb-3">
+                    <label for="MaDT" class="col-form-label">Mã điều trị:</label>
+                    <input type="text" name="MaDT" class="form-control" id="MaDT">
+                </div>
+                <div class="mb-3">
+                    <label for="SL" class="col-form-label">Số lượng:</label>
+                    <input type="number" name="SL" class="form-control" id="SL">
+                </div>
+                <div class="mb-3">
+                    <label for="Lieu" class="col-form-label">Liều dùng:</label>
+                    <input type="text" name="Lieu" class="form-control" id="Lieu">
+                </div>
+            </form>
+        </div>
+        <div>
+            <button id="myButton" type="submit" class="btn btn-primary">Thêm thông tin thuốc</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#myButton').click(function () {
+        $('#myForm').submit();
+    });
+
+</script>

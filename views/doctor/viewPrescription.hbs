@@ -1,0 +1,39 @@
+<h2>Tra cứu chi tiết đơn thuốc</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Mã thuốc</th>
+            <th>Mã điều trị</th>
+            <th>Số lượng</th>
+            <th>Liều dùng</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each DonThuoc}}
+        <tr>
+            <td><input type="text" value="{{this.MaThuoc}}"></td>
+            <td><input type="text" value="{{this.MaDT}}"></td>
+            <td><input type="text" value="{{this.Soluong}}"></td>
+            <td><input type="text" value="{{this.Lieudung}}"></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<br>
+
+<button type="button" class="btn btn-primary btn-ctdt"><a href="/doctor/viewTreatmentPlan/addPrescription">Thêm chi tiết
+        đơn thuốc</a></button>
+<button type="button" class="btn btn-primary btn-ctdt"><a href="/doctor/viewTreatmentPlan/updatePrescription">Sửa chi
+        tiết đơn thuốc</a></button>
+<button type="button" class="btn btn-primary btn-ctdt"><a href="/doctor/viewTreatmentPlan/deletePrescription">Xóa chi
+        tiết đơn thuốc</a></button>
+
+<script>
+    //const table = document.getElementsByClassName('table');
+    //let MaDT = table.rows.item(1).cells[1].children[0].value;
+
+    //const btnCtdt = document.getElementsByClassName('btn-ctdt');
+
+</script>

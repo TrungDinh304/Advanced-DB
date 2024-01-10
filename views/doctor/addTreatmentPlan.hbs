@@ -1,0 +1,63 @@
+<div>
+    <div>
+        <div>
+            <h1>Thêm kế hoạch điều trị bệnh nhân</h1>
+        </div>
+        <div>
+            <form id="myForm" method="post" action="/doctor/addTreatmentPlan">
+                <div class="mb-3">
+                    <label for="MaDT" class="col-form-label">Mã điều trị:</label>
+                    <input type="text" name="MaDT" class="form-control" id="MaDT">
+                </div>
+                <div class="mb-3">
+                    <label for="MoTa" class="col-form-label">Mô tả:</label>
+                    <input type="text" name="MoTa" class="form-control" id="MoTa">
+                </div>
+                <div class="mb-3">
+                    <label for="GhiChu" class="col-form-label">Ghi chú:</label>
+                    <input type="text" name="GhiChu" class="form-control" id="GhiChu">
+                </div>
+                <div class="mb-3">
+                    <label for="TrangThai" class="col-form-label">Trạng thái:</label>
+                    <input type="text" name="TrangThai" class="form-control" id="TrangThai">
+                </div>
+                <div class="mb-3">
+                    <label for="MaBA" class="col-form-label">Mã bệnh án:</label>
+                    <input type="text" name="MaBA" class="form-control" id="MaBA">
+                </div>
+                <div class="mb-3">
+                    <label for="MaDV" class="col-form-label">Mã dịch vụ:</label>
+                    <input type="text" name="MaDV" class="form-control" id="MaDV">
+                </div>
+                <div class="mb-3">
+                    <label for="Ngay" class="col-form-label">Ngày:</label>
+                    <input type="date" name="Ngay" class="form-control" id="Ngay">
+                </div>
+                <div class="mb-3">
+                    <label for="Ca" class="col-form-label">Ca:</label>
+                    <input type="number" name="Ca" class="form-control" id="Ca">
+                </div>
+                <div class="mb-3">
+                    <label for="Chinh" class="col-form-label">Mã nha sĩ khám chính:</label>
+                    <input type="text" name="Chinh" class="form-control" id="Chinh">
+                </div>
+                <div class="mb-3">
+                    <label for="Phu" class="col-form-label">Mã nha sĩ khám phụ:</label>
+                    <input type="text" name="Phu" class="form-control" id="Phu">
+                </div>
+
+            </form>
+        </div>
+        <div>
+            <button id="myButton" type="submit" class="btn btn-primary">Thêm kế hoạch điều trị</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#myButton').click(function () {
+        $('#myForm').submit();
+    });
+
+
+</script>
