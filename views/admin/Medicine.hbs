@@ -1,0 +1,85 @@
+<div>
+    <div>
+        <div>
+            <h1>Thêm Thuốc</h1>
+        </div>
+        <div>
+            <form id="myForm" method="post" action="/admin/Medicine">
+                <div class="mb-3">
+                    <label for="MaThuoc" class="col-form-label">Mã Thuốc:</label>
+                    <input type="text" name="MaThuoc" class="form-control" id="MaThuoc">
+                </div>
+                <div class="mb-3">
+                    <label for="TenThuoc" class="col-form-label">Tên Thuốc:</label>
+                    <input type="text" name="TenThuoc" class="form-control" id="TenThuoc">
+                </div>
+                <div class="mb-3">
+                    <label for="HanSD" class="col-form-label">Hạn Sử Dụng:</label>
+                    <input type="date" name="HanSD" class="form-control" id="HanSD">
+                </div>
+                <div class="mb-3">
+                    <label for="DonGia" class="col-form-label">Đơn Giá:</label>
+                    <input type="int" name="DonGia" class="form-control" id="DonGia">
+                </div>
+                <div class="mb-3">
+                    <label for="DonViTinh" class="col-form-label">Đơn Vị Tính:</label>
+                    <input type="text" name="DonViTinh" class="form-control" id="DonViTinh">
+                </div>
+                <div class="mb-3">
+                    <label for="SoLuongTon" class="col-form-label">Số Lượng Tồn:</label>
+                    <input type="int" name="SoLuongTon" class="form-control" id="SoLuongTon">
+                </div>
+                <div class="mb-3">
+                    <label for="GhiChu" class="col-form-label">Ghi Chú:</label>
+                    <input type="text" name="GhiChu" class="form-control" id="GhiChu">
+                </div>
+
+            </form>
+        </div>
+        <div>
+            <button id="myButton" type="submit" class="btn btn-primary">Thêm Thuốc</button>
+        </div>
+    </div>
+</div>
+
+
+<br>
+<br>
+<h3 style="text-align:center;"> Danh Sách Thuốc:</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Mã Thuốc</th>
+      <th>Tên Thuốc</th>
+      <th>Hạn sử dụng</th>
+      <th>Đơn giá</th>
+      <th>Đơn vị tính</th>
+      <th>Số lượng tồn</th>
+      <th>Ghi Chú</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each Thuoc}}
+    <tr>
+      <td><input type="text" value="{{this.MaThuoc}}"></td>
+      <td><input type="text" value="{{this.TenThuoc}}"></td>
+      <td><input type="date" value="{{this.HanSD}}"></td>
+      <td><input type="int" value="{{this.DonGia}}"></td>
+      <td><input type="text" value="{{this.DonViTinh}}"></td>
+      <td><input type="int" value="{{this.SoLuongTon}}"></td>
+      <td><input type="text" value="{{this.GhiChu}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+
+
+
+<script>
+    $('#myButton').click(function () {
+        $('#myForm').submit();
+    });
+</script>
