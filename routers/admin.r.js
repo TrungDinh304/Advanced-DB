@@ -16,4 +16,10 @@ router.get("/viewPersonalScheduleBydate",adminController.renderSelectPersonalSch
 router.get("/Medicine", adminController.renderAddMedicine);
 router.post("/Medicine",adminController.renderAddMedicine);
 
+router.get("/UpdateMedicine", adminController.renderUpdateMedicine);
+router.post("/UpdateMedicine",adminController.renderUpdateMedicine);
+
+router.get("/RemoveMedicine", adminController.renderRemoveMedicine);
+router.post("/RemoveMedicine",adminController.renderRemoveMedicine);
+
 module.exports = router;

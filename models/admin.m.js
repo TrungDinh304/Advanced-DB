@@ -54,6 +54,31 @@ module.exports = {
         }
     },
 
+    SelectMedicine_MaThuoc: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        console.log(req.body, req.query)
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+
+
+        let MaThuoc = req.body.MaThuoc;
+        if(MaThuoc == undefined) return null;
+        
+        Request.input('MaThuoc',db.db.VarChar,MaThuoc)
+        
+        try {
+            const result1 = await Request.execute('sp_XemThuoc_MaThuoc');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+
     AddMedicine: async function (req, res, next) {
         if (!req.session.config)
             res.redirect('/');
@@ -84,6 +109,70 @@ module.exports = {
     
         try {
             const result1 = await Request.execute('sp_ThemThuoc');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+
+    UpdateMedicine: async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        console.log(req.body)
+        
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+
+        let MaThuoc = req.body.MaThuoc;
+        let TenThuoc = req.body.TenThuoc;
+        let HanSD = req.body.HanSD;
+        let DonGia = req.body.DonGia;
+        let DonViTinh = req.body.DonViTinh;
+        let SoLuong = req.body.SoLuong;
+        let GhiChu = req.body.GhiChu;
+        if(MaThuoc == undefined) return null;
+
+        Request.input('MaThuoc', db.db.VarChar, MaThuoc);
+        Request.input('TenThuoc', db.db.NVarChar, TenThuoc);
+        Request.input('HanSD', db.db.Date, new Date(HanSD));
+        Request.input('DonGia', db.db.Int, DonGia);
+        Request.input('DonViTinh', db.db.NVarChar, DonViTinh);
+        Request.input('SoLuongTon', db.db.Int, SoLuong);
+        Request.input('GhiChu', db.db.NVarChar, GhiChu);
+        
+    
+        try {
+            const result1 = await Request.execute('sp_CapNhatThuoc');
+            //console.log(result1.recordset);
+            return result1.recordset;
+        } catch (err) {
+            console.log(err);
+            return null;
+        }
+    },
+
+    RemoveMedicine:async function (req, res, next) {
+        if (!req.session.config)
+            res.redirect('/');
+
+        console.log(req.body)
+        console.log('Trong xóa')
+        const pool = new db.db.ConnectionPool(req.session.config);
+        const connection = await pool.connect();
+        const Request = new db.db.Request(connection);
+
+        let MaThuoc = req.body.MaThuoc;
+        if(MaThuoc == undefined) return null;
+
+        Request.input('MaThuoc', db.db.VarChar, MaThuoc);
+        
+    
+        try {
+            const result1 = await Request.execute('sp_XoaThuoc');
             //console.log(result1.recordset);
             return result1.recordset;
         } catch (err) {
