@@ -60,7 +60,7 @@
     for (let item of btnMed) {
         let MaDT = item.closest('tr').cells[0].children[0].value;
         let anchor = item.children[0];
-        const url = 'doctor/viewTreatmentPlan/viewPrescription?madt=' + MaDT;
+        const url = 'viewTreatmentPlan/viewPrescription?madt=' + MaDT;
         anchor.href = url;
     }
 </script>
