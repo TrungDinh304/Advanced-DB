@@ -119,7 +119,6 @@ module.exports = {
 
         res.render("doctor/addPrescription", {
             title: "Add Prescription",
-            DonThuoc: DonThuoc,
             logout: true
         });
     },
