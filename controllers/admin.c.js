@@ -41,6 +41,35 @@ module.exports = {
             logout: true
         })
     },
+    renderUpdateMedicine:async function renderUpdateMedicine(req, res, next) {
+        if (!req.session.user)
+            res.redirect('/');
+
+        const Thuoc = await adminModel.SelectMedicine_MaThuoc(req, res, next);
+        
+        adminModel.UpdateMedicine(req,res,next);
+        
+        res.render("admin/UpdateMedicine", {
+            title: "Cap Nhat Thuoc",
+            Thuoc: Thuoc,
+            logout: true
+        })
+    },
+
+    renderRemoveMedicine:async function renderRemoveMedicine(req, res, next) {
+        if (!req.session.user)
+            res.redirect('/');
+
+        const Thuoc = await adminModel.SelectMedicine(req, res, next);
+        
+        adminModel.RemoveMedicine(req,res,next);
+        
+        res.render("admin/RemoveMedicine", {
+            title: "Xoa Thuoc",
+            Thuoc: Thuoc,
+            logout: true
+        })
+    },
 
     
 }
