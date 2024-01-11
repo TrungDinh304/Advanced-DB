@@ -1,0 +1,40 @@
+<h2>Xem lịch làm việc của nha sĩ theo ngày</h2>
+
+<form method="get" action="/admin/viewPersonalScheduleBydate">
+  <label for="Ngay" class="col-form-label">Nhập ngày để xem: </label>
+    <div class="d-flex">
+        <input type="date" name="Ngay" class="form-control" id="Ngay">
+        <button type="submit" class="btn btn-primary">Xem</button>
+    </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Ngày</th>
+      <th>Ca</th>
+      <th>Nha sĩ chính</th>
+      <th>Nha sĩ phụ</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each LichCaNhan}}
+    <tr>
+      <td><input type="text" value="{{this.Ngay}}"></td>
+      <td><input type="text" value="{{this.Ca}}"></td>
+      <td><input type="text" value="{{this.NS_khamchinh}}"></td>
+      <td><input type="text" value="{{this.NS_khamphu}}"></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+<br>
+<br>
+
+<script>
+  $('#myButton').click(function () {
+    $('#myForm').submit();
+  });
+</script>
